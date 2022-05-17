@@ -9,16 +9,16 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Data
     {
         public static List<Driver> Drivers = new()
         {
-            new Driver { Id=1, Name="Charles Leclerc", Team="Ferrari", Nationality="MON", RaceEntered=86 },
-            new Driver { Id=2, Name="Carlos Sainz",   Team="Ferrari", Nationality="ESP", RaceEntered=146 },
-            new Driver { Id=3, Name="Max Verstappen", Team="Redbull", Nationality="NED", RaceEntered=146 },
-            new Driver { Id=4, Name="Lewis Hamilton", Team="Mercedes", Nationality="GBR", RaceEntered=293 },
-            new Driver { Id=5, Name="Lando Norris", Team="Mclaren", Nationality="GBR", RaceEntered=65 },
-            new Driver { Id=6, Name="Daniel Ricardo", Team="Mclaren", Nationality="AUS", RaceEntered=215 },
-            new Driver { Id=7, Name="Valteri Bottas", Team="Alfa Romeo", Nationality="FIN", RaceEntered=183 },
-            new Driver { Id=8, Name="Fernando Alonso", Team="Renault", Nationality="ESP", RaceEntered=341 },
-            new Driver { Id=9, Name="Mick Schumacher", Team="Haas" ,Nationality="GER", RaceEntered=26 },
-            new Driver { Id=10, Name="Sebastian Vettel", Team="Aston Martin", Nationality="GER", RaceEntered=283 }
+            new Driver { Id=1, Name="Charles Leclerc", Team="Ferrari", Nationality="MON", RaceEntered=86, Podiums=17 , Championship=0  },
+            new Driver { Id=2, Name="Carlos Sainz",   Team="Ferrari", Nationality="ESP", RaceEntered=146, Podiums=9 , Championship=0  },
+            new Driver { Id=3, Name="Max Verstappen", Team="Redbull", Nationality="NED", RaceEntered=146, Podiums=63 , Championship=1  },
+            new Driver { Id=4, Name="Lewis Hamilton", Team="Mercedes", Nationality="GBR", RaceEntered=293, Podiums=183 , Championship=7  },
+            new Driver { Id=5, Name="Lando Norris", Team="Mclaren", Nationality="GBR", RaceEntered=65, Podiums=6 , Championship=0  },
+            new Driver { Id=6, Name="Daniel Ricardo", Team="Mclaren", Nationality="AUS", RaceEntered=215, Podiums=32 , Championship=0  },
+            new Driver { Id=7, Name="Valteri Bottas", Team="Alfa Romeo", Nationality="FIN", RaceEntered=183, Podiums=67 , Championship=0  },
+            new Driver { Id=8, Name="Fernando Alonso", Team="Renault", Nationality="ESP", RaceEntered=341, Podiums=98 , Championship=2  },
+            new Driver { Id=9, Name="Mick Schumacher", Team="Haas" ,Nationality="GER", RaceEntered=26, Podiums=0 , Championship=0  },
+            new Driver { Id=10, Name="Sebastian Vettel", Team="Aston Martin", Nationality="GER", RaceEntered=283, Podiums=122 , Championship=4 }
         };
 
         public static List<Team> Teams = new()
