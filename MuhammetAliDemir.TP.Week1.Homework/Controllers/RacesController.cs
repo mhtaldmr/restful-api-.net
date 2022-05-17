@@ -13,8 +13,9 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
     {
         public static List<Race> Races = DataGenerator.Races;
 
-        //Get Method 
+        //GET Method 
         //Getting All the Races in the list
+        //GET /Races
         [HttpGet]
         public IActionResult GetRaces()
         {
@@ -26,6 +27,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         }
 
         //Getting just one race by id
+        //GET /Races/id
         [HttpGet("{id}")]
         public IActionResult GetRaceById(int id)
         {
@@ -37,7 +39,24 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
             return Ok(race);
 
-
         }
+
+
+        //POST Method
+        //Posting race to the list
+        //POST /Races
+        [HttpPost]
+        public IActionResult CreateRace([FromBody] Race race)
+        {
+            //If there is a race in the list with same id, we will get bad request.
+            if (Races.Where(d => d.Id == race.Id).SingleOrDefault() is not null)
+                return BadRequest("This race id is already exist in the list.");
+
+            Races.Add(race);
+            //Showing the added race again in the response.
+            return Created("/races", race);
+        }
+
+ 
     }
 }

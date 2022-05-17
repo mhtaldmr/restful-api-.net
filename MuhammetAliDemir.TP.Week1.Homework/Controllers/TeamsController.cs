@@ -13,8 +13,9 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
     {
         public static List<Team> Teams = DataGenerator.Teams;
 
-        //Get Method 
+        //GET Method 
         //Getting All the Teams in the list
+        //GET /Teams
         [HttpGet]
         public IActionResult GetTeams()
         {
@@ -26,6 +27,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         }
 
         //Getting just one team by id
+        //GET /Teams/id
         [HttpGet("{id}")]
         public IActionResult GetTeamById(int id)
         {
@@ -36,7 +38,23 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
                 return NotFound("There is no team in the list!");
 
             return Ok(team);
-
         }
+
+        //POST Method
+        //Posting Team to the list
+        //POST /Teams
+        [HttpPost]
+        public IActionResult CreateTeam([FromBody] Team team)
+        {
+            //If there is a team in the list with same id, we will get bad request.
+            if (Teams.Where(d => d.Id == team.Id).SingleOrDefault() is not null)
+                return BadRequest("This team id is already exist in the list.");
+
+            Teams.Add(team);
+            //Showing the added team again in the response.
+            return Created("/teams", team);
+        }
+
+
     }
 }
