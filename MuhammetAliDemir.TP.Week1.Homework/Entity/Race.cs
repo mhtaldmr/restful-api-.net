@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MuhammetAliDemir.TP.Week1.Homework.Entity
 {
-    public class Circuit
+    public class Race
     {
         [Required]
         public int Id { get; set; }

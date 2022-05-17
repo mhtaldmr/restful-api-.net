@@ -5,7 +5,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CircuitController : ControllerBase
+    public class RacesController : ControllerBase
     {
     }
 }
