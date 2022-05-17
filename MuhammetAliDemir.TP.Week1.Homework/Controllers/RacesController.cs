@@ -119,5 +119,22 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         }
 
 
+        //***DELETE Methods***
+
+        //Deleitng the race which was selected by id
+        //.../Races/id
+        [HttpDelete("{id}")]
+        public IActionResult DeleteRace(int id)
+        {
+            var raceToDelete = Races.Where(d => d.Id == id).SingleOrDefault();
+
+            if (raceToDelete is null)
+                return BadRequest($"The race you provided with id = {id} is not exist in the list!");
+
+            Races.Remove(raceToDelete);
+            return Ok($"The race with id = {id} has been deleted!");
+        }
+
+
     }
 }

@@ -122,5 +122,22 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         }
 
 
+        //***DELETE Methods***
+
+        //Deleitng the driver which was selected by id
+        //.../Driver/id
+        [HttpDelete("{id}")]
+        public IActionResult DeleteDriver(int id)
+        {
+            var driverToDelete = Drivers.Where(d => d.Id == id).SingleOrDefault();
+
+            if (driverToDelete is null)
+                return BadRequest($"The driver you provided with id = {id} is not exist in the list!");
+
+            Drivers.Remove(driverToDelete);
+            return Ok($"The driver with id = {id} has been deleted!");
+        }
+
+
     }
 }

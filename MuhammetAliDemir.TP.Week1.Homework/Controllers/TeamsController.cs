@@ -120,5 +120,22 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         }
 
 
+        //***DELETE Methods***
+
+        //Deleitng the team which was selected by id
+        //.../Team/id
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTeam(int id)
+        {
+            var teamToDelete = Teams.Where(d => d.Id == id).SingleOrDefault();
+
+            if (teamToDelete is null)
+                return BadRequest($"The team you provided with id = {id} is not exist in the list!");
+
+            Teams.Remove(teamToDelete);
+            return Ok($"The team with id = {id} has been deleted!");
+        }
+
+
     }
 }
