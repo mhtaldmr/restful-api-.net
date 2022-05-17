@@ -100,5 +100,25 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         }
 
 
+        //***PATCH Methods***
+
+        //Updating the team which was selected by id just selected properties (in this situation is "TeamChief")
+        //.../Teams/id?TeamChief=
+        [HttpPatch("{id}")]
+        public IActionResult UpdateTeamChief(int id, string TeamChief)
+        {
+            var teamToPatch = Teams.Where(d => d.Id == id).SingleOrDefault();
+
+            if (teamToPatch is null)
+                return BadRequest($"This team with id = {id} doesnt exist in the list!");
+
+            if (TeamChief is null)
+                return BadRequest("You didnt enter any Team value in the form!");
+
+            teamToPatch.TeamChief = TeamChief;
+            return Ok(teamToPatch);
+        }
+
+
     }
 }

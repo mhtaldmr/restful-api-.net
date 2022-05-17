@@ -99,5 +99,25 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         }
 
 
+        //***PATCH Methods***
+
+        //Updating the race which was selected by id just selected properties (in this situation is "Name")
+        //.../Races/id?Name=
+        [HttpPatch("{id}")]
+        public IActionResult UpdateName(int id, string Name)
+        {
+            var raceToPatch = Races.Where(d => d.Id == id).SingleOrDefault();
+
+            if (raceToPatch is null)
+                return BadRequest($"This race with id = {id} doesnt exist in the list!");
+
+            if (Name is null)
+                return BadRequest("You didnt enter any Name value in the form!");
+
+            raceToPatch.Name = Name;
+            return Ok(raceToPatch);
+        }
+
+
     }
 }

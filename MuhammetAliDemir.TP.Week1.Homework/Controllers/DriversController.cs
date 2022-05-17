@@ -102,5 +102,25 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         }
 
 
+        //***PATCH Methods***
+
+        //Updating the driver which was selected by id just selected properties (in this situation is "Team")
+        //.../Drivers/id?Team=
+        [HttpPatch("{id}")]
+        public IActionResult UpdateTeam(int id, string Team)
+        {
+            var driverToPatch = Drivers.Where(d => d.Id == id).SingleOrDefault();
+
+            if (driverToPatch is null)
+                return BadRequest($"This driver with id = {id} doesnt exist in the list!");
+
+            if (Team is null)
+                return BadRequest("You didnt enter any Team value in the form!");
+
+            driverToPatch.Team = Team;
+            return Ok(driverToPatch);
+        }
+
+
     }
 }
