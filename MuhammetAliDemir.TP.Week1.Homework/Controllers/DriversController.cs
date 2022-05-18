@@ -114,7 +114,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             
             //If there is NOT a driver in the list with this id, we will get bad request.
             if (driverToUpdate is null)
-                return BadRequest($"This driver with id = {id} doesnt exist in the list!");
+                return NotFound($"This driver with id = {id} doesnt exist in the list!");
 
             if (driver is null)
                 return NotFound( $"There is no driver in the form with id = {id}!");
@@ -140,7 +140,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
             if(driver is null)
-                return BadRequest($"This driver with id = {id} doesnt exist in the list!");
+                return NotFound($"This driver with id = {id} doesnt exist in the list!");
 
             //To apply the changes
             driverToPatch.ApplyTo(driver);
@@ -159,7 +159,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
             //if driver doesnt exist then there would be no driver to delete.
             if (driverToDelete is null)
-                return BadRequest($"The driver you provided with id = {id} is not exist in the list!");
+                return NotFound($"The driver you provided with id = {id} is not exist in the list!");
 
             Drivers.Remove(driverToDelete);
             return NoContent(); //Http 204

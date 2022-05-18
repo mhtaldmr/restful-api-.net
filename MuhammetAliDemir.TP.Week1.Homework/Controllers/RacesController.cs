@@ -105,7 +105,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
             //If there is NOT a race in the list with this id, we will get bad request.
             if (raceToUpdate is null)
-                return BadRequest($"This race with id = {id} doesnt exist in the list!");
+                return NotFound($"This race with id = {id} doesnt exist in the list!");
 
             if (race is null)
                 return NotFound($"There is no race in the form with id = {id}!");
@@ -131,7 +131,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             var race = Races.Where(d => d.Id == id).SingleOrDefault();
 
             if (race is null)
-                return BadRequest($"This race with id = {id} doesnt exist in the list!");
+                return NotFound($"This race with id = {id} doesnt exist in the list!");
 
             //To apply the changes
             raceToPatch.ApplyTo(race);
@@ -149,7 +149,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             var raceToDelete = Races.Where(d => d.Id == id).SingleOrDefault();
 
             if (raceToDelete is null)
-                return BadRequest($"The race you provided with id = {id} is not exist in the list!");
+                return NotFound($"The race you provided with id = {id} is not exist in the list!");
 
             Races.Remove(raceToDelete);
             return NoContent(); //Http 204

@@ -106,7 +106,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
             //If there is NOT a team in the list with same id, we will get bad request.
             if (teamToUpdate is null)
-                return BadRequest($"This team with id = {id} doesnt exist in the list!");
+                return NotFound($"This team with id = {id} doesnt exist in the list!");
 
             if (team is null)
                 return NotFound($"There is no team in the form with id = {id}!");
@@ -132,7 +132,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             var team = Teams.Where(d => d.Id == id).SingleOrDefault();
 
             if (team is null)
-                return BadRequest($"This team with id = {id} doesnt exist in the list!");
+                return NotFound($"This team with id = {id} doesnt exist in the list!");
 
             //To apply the changes
             teamToPatch.ApplyTo(team);
@@ -150,7 +150,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             var teamToDelete = Teams.Where(d => d.Id == id).SingleOrDefault();
 
             if (teamToDelete is null)
-                return BadRequest($"The team you provided with id = {id} is not exist in the list!");
+                return NotFound($"The team you provided with id = {id} is not exist in the list!");
 
             Teams.Remove(teamToDelete);
             return NoContent(); //http 204
