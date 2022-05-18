@@ -24,7 +24,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             if (Drivers.Count == 0)
                 return NotFound("There is no drivers in the list!");
 
-            return Ok(Drivers);
+            return Ok(Drivers); //Http 200
         }
 
         //Getting just one driver by id
@@ -32,13 +32,13 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet("{id}")]
         public IActionResult GetDriverById(int id)
         {
-            //If there is NOT a driver in the list, we will get : #404 Not Found Error
             var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
+            //If there is NOT a driver in the list, we will get : #404 Not Found Error
             if (driver is null)
                 return NotFound( $"There is no drivers in the list with id = {id}!");
 
-            return Ok(driver);
+            return Ok(driver); //Http 200
         }
 
         //Getting just one driver by id from directly url
@@ -46,13 +46,32 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet("idFromQuery")]
         public IActionResult GetDriverByIdFromQuery([FromQuery] int id)
         {
-            //If there is NOT a driver in the list, we will get : #404 Not Found Error
             var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
+            //If there is NOT a driver in the list, we will get : #404 Not Found Error
             if (driver is null)
                 return NotFound($"There is no driver in the list with id = {id}!");
 
-            return Ok(driver);
+            return Ok(driver); //Http 200
+        }
+
+        //Getting drivers according to a spesific property filter defined below
+        //.../Drivers/list?raceCount=
+        [HttpGet("list")]
+        public IActionResult GetDriverByRaceEntered([FromQuery] int? raceEntered)
+        {
+            var drivers = Drivers.Where(d => d.RaceEntered >= raceEntered)
+                                 .OrderByDescending(d => d.RaceEntered)
+                                 .ToList();
+            
+            if (raceEntered is null)
+                return NotFound("You didnt enter any input into the form!");
+
+            //If there is NOT a driver in the list, we will get : #404 Not Found Error
+            if (drivers.Count == 0)
+                return NotFound($"There is no driver in the list with input = {raceEntered}!");
+
+            return Ok(drivers); //Http 200
         }
 
 
@@ -63,9 +82,9 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpPost]
         public IActionResult CreateDriver([FromBody] Driver driver)
         {
-            //If there is a driver in the list with same id, we will get bad request.
             var driverToCheck = Drivers.Where(d => d.Id == driver.Id).SingleOrDefault();
 
+            //If there is a driver in the list with same id, we will get bad request.
             if (driverToCheck is not null)
                 return BadRequest( $"This driver with id = {driver.Id} is already exist in the list!");
 
@@ -82,9 +101,9 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateDriver(int id, Driver driver)
         {
-            //If there is NOT a driver in the list with same id, we will get bad request.
             var driverToUpdate = Drivers.Where(d => d.Id == id).SingleOrDefault();
             
+            //If there is NOT a driver in the list with this id, we will get bad request.
             if (driverToUpdate is null)
                 return BadRequest($"This driver with id = {id} doesnt exist in the list!");
 
@@ -98,7 +117,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             driverToUpdate.Podiums = driverToUpdate.Podiums != default ? driver.Podiums : driverToUpdate.Podiums;
             driverToUpdate.Championship = driverToUpdate.Championship != default ? driver.Championship : driverToUpdate.Championship;
 
-            return Ok(driverToUpdate);
+            return Ok(driverToUpdate); //Http 200
         }
 
 
@@ -118,7 +137,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
                 return BadRequest("You didnt enter any Team value in the form!");
 
             driverToPatch.Team = Team;
-            return Ok(driverToPatch);
+            return Ok(driverToPatch); //Http 200
         }
 
 
@@ -131,11 +150,12 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         {
             var driverToDelete = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
+            //if driver doesnt exist then there would be no driver to delete.
             if (driverToDelete is null)
                 return BadRequest($"The driver you provided with id = {id} is not exist in the list!");
 
             Drivers.Remove(driverToDelete);
-            return Ok($"The driver with id = {id} has been deleted!");
+            return Ok($"The driver with id = {id} has been deleted!"); //Http 200
         }
 
 

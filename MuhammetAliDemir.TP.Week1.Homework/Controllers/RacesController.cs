@@ -55,6 +55,25 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             return Ok(race);
         }
 
+        //Getting races according to a spesific property filter defined below
+        //.../Races/list?location=
+        [HttpGet("list")]
+        public IActionResult GetRaceByLocation([FromQuery] string location)
+        {
+            var races = Races.Where(r => r.Location == location)
+                             .OrderBy(r => r.Location)
+                             .ToList();
+
+            if (location is null)
+                return NotFound("You didnt enter any input into the form!");
+
+            //If there is NOT a race in the list, we will get : #404 Not Found Error
+            if (races.Count == 0)
+                return NotFound($"There is no race in the list with input = {location}!");
+
+            return Ok(races); //Http 200
+        }
+
 
         //***POST Methods***
 

@@ -55,6 +55,25 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             return Ok(team);
         }
 
+        //Getting teams according to a spesific property filter defined below
+        //.../Teams/list?powerunit=
+        [HttpGet("list")]
+        public IActionResult GetTeamByPowerUnit([FromQuery] string powerUnit)
+        {
+            var teams = Teams.Where(r => r.PowerUnit == powerUnit)
+                             .OrderByDescending(r => r.Championship)
+                             .ToList();
+
+            if (powerUnit is null)
+                return NotFound("You didnt enter any input into the form!");
+
+            //If there is NOT a team in the list, we will get : #404 Not Found Error
+            if (teams.Count == 0 )
+                return NotFound($"There is no team in the list with input = {powerUnit}!");
+
+            return Ok(teams); //Http 200
+        }
+
 
         //***POST Methods***
 
