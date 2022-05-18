@@ -162,7 +162,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
                 return BadRequest($"The driver you provided with id = {id} is not exist in the list!");
 
             Drivers.Remove(driverToDelete);
-            return Ok($"The driver with id = {id} has been deleted!"); //Http 200
+            return NoContent(); //Http 204
         }
 
 

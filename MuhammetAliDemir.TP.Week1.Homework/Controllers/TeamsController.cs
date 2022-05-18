@@ -153,7 +153,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
                 return BadRequest($"The team you provided with id = {id} is not exist in the list!");
 
             Teams.Remove(teamToDelete);
-            return Ok($"The team with id = {id} has been deleted!"); //http 200
+            return NoContent(); //http 204
         }
 
 
