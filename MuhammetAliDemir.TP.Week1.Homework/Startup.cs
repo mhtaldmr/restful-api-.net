@@ -28,6 +28,8 @@ namespace MuhammetAliDemir.TP.Week1.Homework
         {
 
             services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MuhammetAliDemir.TP.Week1.Homework", Version = "v1" });

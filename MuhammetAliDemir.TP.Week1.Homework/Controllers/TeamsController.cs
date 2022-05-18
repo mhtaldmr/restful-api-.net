@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using MuhammetAliDemir.TP.Week1.Homework.Data;
 using MuhammetAliDemir.TP.Week1.Homework.Entity;
@@ -123,21 +124,19 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
         //***PATCH Methods***
 
-        //Updating the team which was selected by id just selected properties (in this situation is "TeamChief")
-        //.../Teams/id?TeamChief=
+        //Updating the team which was selected by id, Entering the values in the body
+        //.../Teams/id
         [HttpPatch("{id}")]
-        public IActionResult UpdateTeamChief(int id, string TeamChief)
+        public IActionResult UpdateTeamWithJsonPatch(int id, [FromBody] JsonPatchDocument<Team> teamToPatch)
         {
-            var teamToPatch = Teams.Where(d => d.Id == id).SingleOrDefault();
+            var team = Teams.Where(d => d.Id == id).SingleOrDefault();
 
-            if (teamToPatch is null)
+            if (team is null)
                 return BadRequest($"This team with id = {id} doesnt exist in the list!");
 
-            if (TeamChief is null)
-                return BadRequest("You didnt enter any Team value in the form!");
-
-            teamToPatch.TeamChief = TeamChief;
-            return Ok(teamToPatch); //http 200
+            //To apply the changes
+            teamToPatch.ApplyTo(team);
+            return Ok(team); //Http 200
         }
 
 

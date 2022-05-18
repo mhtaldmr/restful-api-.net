@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using MuhammetAliDemir.TP.Week1.Homework.Data;
 using MuhammetAliDemir.TP.Week1.Homework.Entity;
@@ -122,21 +123,19 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
         //***PATCH Methods***
 
-        //Updating the race which was selected by id just selected properties (in this situation is "Name")
-        //.../Races/id?Name=
+        //Updating the race which was selected by id, Entering the values in the body
+        //.../Races/id
         [HttpPatch("{id}")]
-        public IActionResult UpdateRaceName(int id, string Name)
+        public IActionResult UpdateDriverWithJsonPatch(int id, [FromBody] JsonPatchDocument<Race> raceToPatch)
         {
-            var raceToPatch = Races.Where(d => d.Id == id).SingleOrDefault();
+            var race = Races.Where(d => d.Id == id).SingleOrDefault();
 
-            if (raceToPatch is null)
+            if (race is null)
                 return BadRequest($"This race with id = {id} doesnt exist in the list!");
 
-            if (Name is null)
-                return BadRequest("You didnt enter any Name value in the form!");
-
-            raceToPatch.Name = Name;
-            return Ok(raceToPatch); //Http 200
+            //To apply the changes
+            raceToPatch.ApplyTo(race);
+            return Ok(race); //Http 200
         }
 
 

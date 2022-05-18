@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using MuhammetAliDemir.TP.Week1.Homework.Data;
 using MuhammetAliDemir.TP.Week1.Homework.Entity;
@@ -131,21 +132,19 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
         //***PATCH Methods***
 
-        //Updating the driver which was selected by id just selected properties (in this situation is "Team")
-        //.../Drivers/id?Team=
-        [HttpPatch("{id}")]
-        public IActionResult UpdateDriver(int id, string Team)
+        //Updating the driver which was selected by id, Entering the values in the body
+        //.../Drivers/id
+        [HttpPatch("{id}")] 
+        public IActionResult UpdateDriverWithJsonPatch( int id,[FromBody] JsonPatchDocument<Driver> driverToPatch)
         {
-            var driverToPatch = Drivers.Where(d => d.Id == id).SingleOrDefault();
+            var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
-            if (driverToPatch is null)
+            if(driver is null)
                 return BadRequest($"This driver with id = {id} doesnt exist in the list!");
 
-            if (Team is null)
-                return BadRequest("You didnt enter any Team value in the form!");
-
-            driverToPatch.Team = Team;
-            return Ok(driverToPatch); //Http 200
+            //To apply the changes
+            driverToPatch.ApplyTo(driver);
+            return Ok(driver); //Http 200
         }
 
 

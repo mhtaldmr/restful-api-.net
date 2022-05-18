@@ -1,18 +1,19 @@
 
 # TP .Net Week1
 
-This project is an example of using *Restful API* principles.
+This project is an example of using  ***Restful API*** principles.
 In the project the main theme is Formula 1 (a.k.a F1 or Formula One) Motor Racing elements.
 
 ### What I have used so far:
-- Asp.Net Core Web API with .Net5.0 framework.
+- Asp.Net Core Web API with `.Net5.0` framework.
 - There is no Database used in this project.
 - To be able to use Restful API's, dummy datas generated in Data Folder.
+- To test the APIs, Swagger and Postman has been used.
 
 
 ## Requirements
 - This project must have Restful standarts.
-- GET,POST,PUT,DELETE,PATCH methods must be used.
+- GET, POST, PUT, DELETE, PATCH methods must be used.
 - Must be following Http staus code standarts.
 - 200,201,400,404,500 Status codes must be showed.
 - Required fields must be checked.
