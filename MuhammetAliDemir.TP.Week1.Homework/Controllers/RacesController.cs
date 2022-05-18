@@ -31,7 +31,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Getting just one race by id
         //.../Races/id
         [HttpGet("{id}")]
-        public IActionResult GetRaceById(int id)
+        public IActionResult GetRaceById([FromBody] int id)
         {
             //If there is no race in the list, we will get : http 404 Not Found Error
             var race = Races.Where(d => d.Id == id).SingleOrDefault();
@@ -99,7 +99,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Updating the race which was selected by id
         //.../Races/id
         [HttpPut("{id}")]
-        public IActionResult UpdateRace(int id, Race race)
+        public IActionResult UpdateRace( int id, Race race)
         {
             var raceToUpdate = Races.Where(d => d.Id == id).SingleOrDefault();
 
@@ -126,7 +126,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Updating the race which was selected by id, Entering the values in the body
         //.../Races/id
         [HttpPatch("{id}")]
-        public IActionResult UpdateDriverWithJsonPatch(int id, [FromBody] JsonPatchDocument<Race> raceToPatch)
+        public IActionResult UpdateRaceWithJsonPatch( int id, [FromBody] JsonPatchDocument<Race> raceToPatch)
         {
             var race = Races.Where(d => d.Id == id).SingleOrDefault();
 
@@ -144,7 +144,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Deleitng the race which was selected by id
         //.../Races/id
         [HttpDelete("{id}")]
-        public IActionResult DeleteRace(int id)
+        public IActionResult DeleteRace([FromBody] int id)
         {
             var raceToDelete = Races.Where(d => d.Id == id).SingleOrDefault();
 

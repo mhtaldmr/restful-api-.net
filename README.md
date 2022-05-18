@@ -1,4 +1,5 @@
 
+
 # TP .Net Week1
 
 This project is an example of using  ***Restful API*** principles.
@@ -6,9 +7,10 @@ In the project the main theme is Formula 1 (a.k.a F1 or Formula One) Motor Racin
 
 ### What I have used so far:
 - Asp.Net Core Web API with `.Net5.0` framework.
-- There is no Database used in this project.
-- To be able to use Restful API's, dummy datas generated in Data Folder.
-- To test the APIs, Swagger and Postman has been used.
+- No Database used in this project.
+- To be able to use Restful APIs, dummy datas generated in Data Folder.
+- To test the APIs, *Swagger* and *Postman* has been used.
+- To be able to use Patch method, *JsonPatch* and *NewtonsoftJson* packages has been used.
 
 
 ## Requirements
@@ -25,43 +27,57 @@ In the project the main theme is Formula 1 (a.k.a F1 or Formula One) Motor Racin
 
 To get the project :
 ```
-	git clone https://github.com/mhtaldmr/mhtaldmr.git
+    git clone https://github.com/mhtaldmr/mhtaldmr.git
 ```
 To reach the project folder :
 ```
-	cd MuhammetAliDemir.TP.Week1.Homework
+    cd MuhammetAliDemir.TP.Week1.Homework
 ```
 To run the project:
 - If you are using the Visual Studio, just press **F5** or press **Start Debugging**.
 
 - If you are using terminal : 
 ```
-	dotnet run
+    dotnet run
 ```
 
 
 ## API Endpoints
 
 * All the http mehtods and return types in requirements are represented in the project.
-
+<br>
 *  Examples of endpoints like:
 <img height=100 src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" alt="endpoint" />
 
-- Get a driver by Id example:
+- To be able to use Patch methods, JsonPatch and NewtonsoftJson Packages installed.
+- Adding the service of this package to Startup.cs file:
+```
+    services.AddControllers().AddNewtonsoftJson();
+```
+- Updating a spesific field by using Patch method:
 ```c
         //.../Drivers/id
-        [HttpGet("{id}")]
-        public IActionResult GetDriverById([FromBody] int id)
+        [HttpPatch("{id}")] 
+        public IActionResult UpdateDriverWithJsonPatch( int id,[FromBody] JsonPatchDocument<Driver> driverToPatch)
         {
             var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
-            //If there is NOT a driver in the list, we will get : http 404 Not Found Error
-            if (driver is null)
-                return NotFound( $"There is no drivers in the list with id = {id}!");
+            if(driver is null)
+                return BadRequest($"This driver with id = {id} doesnt exist in the list!");
 
-            return Ok(driver); //http 200
-        } 
+            //To apply the changes
+            driverToPatch.ApplyTo(driver);
+            return Ok(driver); //Http 200
+        }
 ```
+- In the body of the Patch, the parameters need to be written:
+```c
+    [ {"op": "replace","path": "/Team", "value": "Mercedes" } ]
+```
+
+ - For more information about JsonPatch methods visit : [JsonPatch in Asp.Net](https://docs.microsoft.com/en-us/aspnet/core/web-api/jsonpatch?view=aspnetcore-5.0)
+<br>
+
 - Filtering and sorting a team example:
 ```c
         //.../Teams/list?powerunit=
@@ -108,12 +124,12 @@ I have used 3 entity in this project to define Driver, Race and Team.
 - Since these fields are common, these fields can be seperated by an BaseEntity and Inherited others.
 
 - Drivers can have;
-	* Team, Nationality, RaceEntered, Podiums, Championship
+    * Team, Nationality, RaceEntered, Podiums, Championship
 
 - Races can have;
-	* Location, Length, NumberOfLaps, LapRecord, FirstRaceAt
+    * Location, Length, NumberOfLaps, LapRecord, FirstRaceAt
 
 - Teams can have;
-	* PowerUnit, Country, TeamChief, Drivers, Championship
+    * PowerUnit, Country, TeamChief, Drivers, Championship
 
 ----

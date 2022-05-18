@@ -31,7 +31,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Getting just one team by id
         //.../Teams/id
         [HttpGet("{id}")]
-        public IActionResult GetTeamById(int id)
+        public IActionResult GetTeamById([FromBody] int id)
         {
             var team = Teams.Where(d => d.Id == id).SingleOrDefault();
 
@@ -100,7 +100,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Updating the team which was selected by id
         //.../Teams/id
         [HttpPut("{id}")]
-        public IActionResult UpdateTeam(int id, Team team)
+        public IActionResult UpdateTeam( int id, Team team)
         {
             var teamToUpdate = Teams.Where(d => d.Id == id).SingleOrDefault();
 
@@ -127,7 +127,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Updating the team which was selected by id, Entering the values in the body
         //.../Teams/id
         [HttpPatch("{id}")]
-        public IActionResult UpdateTeamWithJsonPatch(int id, [FromBody] JsonPatchDocument<Team> teamToPatch)
+        public IActionResult UpdateTeamWithJsonPatch( int id, [FromBody] JsonPatchDocument<Team> teamToPatch)
         {
             var team = Teams.Where(d => d.Id == id).SingleOrDefault();
 
@@ -145,7 +145,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Deleitng the team which was selected by id
         //.../Team/id
         [HttpDelete("{id}")]
-        public IActionResult DeleteTeam(int id)
+        public IActionResult DeleteTeam([FromBody] int id)
         {
             var teamToDelete = Teams.Where(d => d.Id == id).SingleOrDefault();
 

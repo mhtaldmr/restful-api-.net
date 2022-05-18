@@ -108,7 +108,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Updating the driver which was selected by id
         //.../Drivers/id
         [HttpPut("{id}")]
-        public IActionResult UpdateDriver(int id, Driver driver)
+        public IActionResult UpdateDriver( int id, Driver driver)
         {
             var driverToUpdate = Drivers.Where(d => d.Id == id).SingleOrDefault();
             
@@ -153,7 +153,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Deleitng the driver which was selected by id
         //.../Driver/id
         [HttpDelete("{id}")]
-        public IActionResult DeleteDriver(int id)
+        public IActionResult DeleteDriver([FromBody] int id)
         {
             var driverToDelete = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
