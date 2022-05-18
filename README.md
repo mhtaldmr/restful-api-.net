@@ -47,7 +47,7 @@ To run the project:
 * All the http mehtods and return types in requirements are represented in the project.
 <br>
 *  Examples of endpoints like:
-<img height=100 src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" alt="endpoint" />
+<img src="https://github.com/mhtaldmr/malleyoo/blob/master/endpoints.PNG" alt="endpoint" />
 
 - To be able to use Patch methods, JsonPatch and NewtonsoftJson Packages installed.
 - Adding the service of this package to Startup.cs file:
@@ -72,7 +72,7 @@ To run the project:
 ```
 - In the body of the Patch, the parameters need to be written:
 ```c
-    [ {"op": "replace","path": "/Team", "value": "Mercedes" } ]
+    [ {"op": "replace","path": "/Name", "value": "Mercedes" } ]
 ```
 
  - For more information about JsonPatch methods visit : [JsonPatch in Asp.Net](https://docs.microsoft.com/en-us/aspnet/core/web-api/jsonpatch?view=aspnetcore-5.0)

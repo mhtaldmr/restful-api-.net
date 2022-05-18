@@ -16,3 +16,4 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Entity
         public DateTime FirstRaceAt { get; set; }
     }
 }
+
