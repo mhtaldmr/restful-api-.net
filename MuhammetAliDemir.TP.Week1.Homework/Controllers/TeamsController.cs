@@ -31,7 +31,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Getting just one team by id
         //.../Teams/id
         [HttpGet("{id}")]
-        public IActionResult GetTeamById([FromBody] int id)
+        public IActionResult GetTeamById( int id )
         {
             var team = Teams.Where(d => d.Id == id).SingleOrDefault();
 
@@ -91,7 +91,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
             Teams.Add(team);
             //Showing the added team again in the response.
-            return Created("/teams", team); //http 201
+            return Created("/teams", Teams); //http 201
         }
 
 
@@ -145,7 +145,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Deleitng the team which was selected by id
         //.../Team/id
         [HttpDelete("{id}")]
-        public IActionResult DeleteTeam([FromBody] int id)
+        public IActionResult DeleteTeam( int id )
         {
             var teamToDelete = Teams.Where(d => d.Id == id).SingleOrDefault();
 

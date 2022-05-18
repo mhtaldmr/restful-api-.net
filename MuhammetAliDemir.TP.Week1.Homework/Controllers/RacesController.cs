@@ -31,7 +31,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Getting just one race by id
         //.../Races/id
         [HttpGet("{id}")]
-        public IActionResult GetRaceById([FromBody] int id)
+        public IActionResult GetRaceById( int id )
         {
             //If there is no race in the list, we will get : http 404 Not Found Error
             var race = Races.Where(d => d.Id == id).SingleOrDefault();
@@ -91,7 +91,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
             Races.Add(race);
             //Showing the added race again in the response.
-            return Created("/races", race); //http 201
+            return Created("/races", Races); //http 201
         }
 
         //***PUT Methods***
@@ -144,7 +144,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Deleitng the race which was selected by id
         //.../Races/id
         [HttpDelete("{id}")]
-        public IActionResult DeleteRace([FromBody] int id)
+        public IActionResult DeleteRace( int id )
         {
             var raceToDelete = Races.Where(d => d.Id == id).SingleOrDefault();
 
