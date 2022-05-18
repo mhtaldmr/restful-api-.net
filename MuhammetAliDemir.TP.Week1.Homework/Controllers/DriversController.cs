@@ -74,6 +74,14 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             return Ok(drivers); //Http 200
         }
 
+        //Internal Service Code Example
+        //.../Drivers/InternalServiceErrorExample
+        [HttpGet("InternalServiceErrorExample")]
+        public IActionResult InternalServiceError()
+        {
+            return StatusCode(500,"500 Internal Server Error Occured!"); //Http 500
+        }
+
 
         //***POST Methods***
 

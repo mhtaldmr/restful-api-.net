@@ -13,6 +13,6 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Entity
         public double Length { get; set; }
         public int NumberOfLaps { get; set; }
         public double LapRecord { get; set; }
-        public DateTime FirstRace { get; set; }
+        public DateTime FirstRaceAt { get; set; }
     }
 }
