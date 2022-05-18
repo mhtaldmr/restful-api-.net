@@ -30,7 +30,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Getting just one driver by id
         //.../Drivers/id
         [HttpGet("{id}")]
-        public IActionResult GetDriverById(int id)
+        public IActionResult GetDriverById([FromBody] int id)
         {
             var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
@@ -43,7 +43,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
         //Getting just one driver by id from directly url
         //.../Drivers/idFromQuery?id=
-        [HttpGet("idFromQuery")]
+        [HttpGet("id-from-query")]
         public IActionResult GetDriverByIdFromQuery([FromQuery] int id)
         {
             var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
@@ -69,14 +69,14 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
             //If there is NOT a driver in the list, we will get : http 404 Not Found Error
             if (drivers.Count == 0)
-                return NotFound($"There is no driver in the list with input = {raceEntered}!");
+                return NotFound($"There is no driver entered more than {raceEntered} race in the list!");
 
             return Ok(drivers); //Http 200
         }
 
         //Internal Service Code Example
         //.../Drivers/InternalServiceErrorExample
-        [HttpGet("InternalServiceErrorExample")]
+        [HttpGet("internal-service-error")]
         public IActionResult InternalServiceError()
         {
             return StatusCode(500,"500 Internal Server Error Occured!"); //Http 500
@@ -134,7 +134,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Updating the driver which was selected by id just selected properties (in this situation is "Team")
         //.../Drivers/id?Team=
         [HttpPatch("{id}")]
-        public IActionResult UpdateTeam(int id, string Team)
+        public IActionResult UpdateDriver(int id, string Team)
         {
             var driverToPatch = Drivers.Where(d => d.Id == id).SingleOrDefault();
 

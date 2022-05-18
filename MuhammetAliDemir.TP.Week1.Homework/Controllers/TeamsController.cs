@@ -43,7 +43,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
         //Getting just one team by id from directly url
         //.../Teams/idFromQuery?id=
-        [HttpGet("idFromQuery")]
+        [HttpGet("id-from-query")]
         public IActionResult GetTeamByIdFromQuery([FromQuery] int id)
         {
             var team = Teams.Where(d => d.Id == id).SingleOrDefault();
@@ -101,9 +101,9 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateTeam(int id, Team team)
         {
-            //If there is NOT a team in the list with same id, we will get bad request.
             var teamToUpdate = Teams.Where(d => d.Id == id).SingleOrDefault();
 
+            //If there is NOT a team in the list with same id, we will get bad request.
             if (teamToUpdate is null)
                 return BadRequest($"This team with id = {id} doesnt exist in the list!");
 

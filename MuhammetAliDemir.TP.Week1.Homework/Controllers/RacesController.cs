@@ -43,7 +43,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
 
         //Getting just one race by id from directly url
         //.../Races/idFromQuery?id=
-        [HttpGet("idFromQuery")]
+        [HttpGet("id-from-query")]
         public IActionResult GetRaceByIdFromQuery([FromQuery] int id)
         {
             //If there is NOT a race in the list, we will get : http 404 Not Found Error
@@ -114,7 +114,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             raceToUpdate.Length = raceToUpdate.Length != default ? race.Length : raceToUpdate.Length;
             raceToUpdate.NumberOfLaps = raceToUpdate.NumberOfLaps != default ? race.NumberOfLaps : raceToUpdate.NumberOfLaps;
             raceToUpdate.LapRecord = raceToUpdate.LapRecord != default ? race.LapRecord : raceToUpdate.LapRecord;
-            raceToUpdate.FirstRace = raceToUpdate.FirstRace != default ? race.FirstRace : raceToUpdate.FirstRace;
+            raceToUpdate.FirstRaceAt = raceToUpdate.FirstRaceAt != default ? race.FirstRaceAt : raceToUpdate.FirstRaceAt;
 
             return Ok(raceToUpdate); //Http 200
         }
@@ -125,7 +125,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         //Updating the race which was selected by id just selected properties (in this situation is "Name")
         //.../Races/id?Name=
         [HttpPatch("{id}")]
-        public IActionResult UpdateName(int id, string Name)
+        public IActionResult UpdateRaceName(int id, string Name)
         {
             var raceToPatch = Races.Where(d => d.Id == id).SingleOrDefault();
 

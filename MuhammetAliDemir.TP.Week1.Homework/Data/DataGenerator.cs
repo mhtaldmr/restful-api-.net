@@ -37,16 +37,16 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Data
 
         public static List<Race> Races = new()
         {
-            new Race { Id=1,Name="TurkishGp",  Location="Turkey",  Length=5.338, NumberOfLaps=58, LapRecord=1.22998, FirstRace=DateTime.Parse("01-01-2005") },
-            new Race { Id=2,Name="MonacoGP",   Location="Monaco",  Length=3.337, NumberOfLaps=78, LapRecord=1.12909, FirstRace=DateTime.Parse("01-01-1950") },
-            new Race { Id=3,Name="SilverstoneGp",Location="England",Length=5.891,NumberOfLaps=52, LapRecord=1.27097, FirstRace=DateTime.Parse("01-01-1950") },
-            new Race { Id=4,Name="SpaGp",      Location="Belgium", Length=7004,  NumberOfLaps=44, LapRecord=1.46286, FirstRace=DateTime.Parse("01-01-1950") },
-            new Race { Id=5,Name="MonzaGp",    Location="Italy",   Length=5.793, NumberOfLaps=53, LapRecord=1.21046, FirstRace=DateTime.Parse("01-01-1950") },
-            new Race { Id=6,Name="CatalunyaGp",Location="Spain",   Length=4.675, NumberOfLaps=66, LapRecord=1.18149, FirstRace=DateTime.Parse("01-01-1991") },
-            new Race { Id=7,Name="CanadaGp",   Location="Canada",  Length=4.361, NumberOfLaps=70, LapRecord=1.13078, FirstRace=DateTime.Parse("01-01-1978") },
-            new Race { Id=8,Name="SaoPauloGp", Location="Brazil",  Length=4.309, NumberOfLaps=71, LapRecord=1.10540, FirstRace=DateTime.Parse("01-01-1973") },
-            new Race { Id=9,Name="AustinGp",   Location="USA",     Length=5.513, NumberOfLaps=56, LapRecord=1.36169, FirstRace=DateTime.Parse("01-01-2012") },
-            new Race { Id=10,Name="MexicoGp",  Location="Mexico",  Length=4.304, NumberOfLaps=71, LapRecord=1.17774, FirstRace=DateTime.Parse("01-01-1963") }
+            new Race { Id=1,Name="TurkishGp",  Location="Turkey",  Length=5.338, NumberOfLaps=58, LapRecord=1.22998, FirstRaceAt=DateTime.Parse("01-01-2005") },
+            new Race { Id=2,Name="MonacoGP",   Location="Monaco",  Length=3.337, NumberOfLaps=78, LapRecord=1.12909, FirstRaceAt=DateTime.Parse("01-01-1950") },
+            new Race { Id=3,Name="SilverstoneGp",Location="England",Length=5.891,NumberOfLaps=52, LapRecord=1.27097, FirstRaceAt=DateTime.Parse("01-01-1950") },
+            new Race { Id=4,Name="SpaGp",      Location="Belgium", Length=7004,  NumberOfLaps=44, LapRecord=1.46286, FirstRaceAt=DateTime.Parse("01-01-1950") },
+            new Race { Id=5,Name="MonzaGp",    Location="Italy",   Length=5.793, NumberOfLaps=53, LapRecord=1.21046, FirstRaceAt=DateTime.Parse("01-01-1950") },
+            new Race { Id=6,Name="CatalunyaGp",Location="Spain",   Length=4.675, NumberOfLaps=66, LapRecord=1.18149, FirstRaceAt=DateTime.Parse("01-01-1991") },
+            new Race { Id=7,Name="CanadaGp",   Location="Canada",  Length=4.361, NumberOfLaps=70, LapRecord=1.13078, FirstRaceAt=DateTime.Parse("01-01-1978") },
+            new Race { Id=8,Name="SaoPauloGp", Location="Brazil",  Length=4.309, NumberOfLaps=71, LapRecord=1.10540, FirstRaceAt=DateTime.Parse("01-01-1973") },
+            new Race { Id=9,Name="AustinGp",   Location="USA",     Length=5.513, NumberOfLaps=56, LapRecord=1.36169, FirstRaceAt=DateTime.Parse("01-01-2012") },
+            new Race { Id=10,Name="MexicoGp",  Location="Mexico",  Length=4.304, NumberOfLaps=71, LapRecord=1.17774, FirstRaceAt=DateTime.Parse("01-01-1963") }
         };
 
 
