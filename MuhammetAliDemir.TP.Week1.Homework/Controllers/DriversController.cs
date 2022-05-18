@@ -20,7 +20,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet]
         public IActionResult GetDrivers()
         {
-            //If there is NOT a driver in the list, we will get : #404 Not Found Error
+            //If there is NOT a driver in the list, we will get : http 404 Not Found Error
             if (Drivers.Count == 0)
                 return NotFound("There is no drivers in the list!");
 
@@ -34,7 +34,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         {
             var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
-            //If there is NOT a driver in the list, we will get : #404 Not Found Error
+            //If there is NOT a driver in the list, we will get : http 404 Not Found Error
             if (driver is null)
                 return NotFound( $"There is no drivers in the list with id = {id}!");
 
@@ -48,7 +48,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         {
             var driver = Drivers.Where(d => d.Id == id).SingleOrDefault();
 
-            //If there is NOT a driver in the list, we will get : #404 Not Found Error
+            //If there is NOT a driver in the list, we will get : http 404 Not Found Error
             if (driver is null)
                 return NotFound($"There is no driver in the list with id = {id}!");
 
@@ -67,7 +67,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             if (raceEntered is null)
                 return NotFound("You didnt enter any input into the form!");
 
-            //If there is NOT a driver in the list, we will get : #404 Not Found Error
+            //If there is NOT a driver in the list, we will get : http 404 Not Found Error
             if (drivers.Count == 0)
                 return NotFound($"There is no driver in the list with input = {raceEntered}!");
 

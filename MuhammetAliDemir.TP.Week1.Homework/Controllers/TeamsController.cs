@@ -20,7 +20,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet]
         public IActionResult GetTeams()
         {
-            //If there is no team in the list, we will get : #404 Not Found Error
+            //If there is no team in the list, we will get : http 404 Not Found Error
             if (Teams.Count == 0)
                 return NotFound("There is no team in the list!");
 
@@ -32,13 +32,13 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet("{id}")]
         public IActionResult GetTeamById(int id)
         {
-            //If there is no team in the list, we will get : #404 Not Found Error
             var team = Teams.Where(d => d.Id == id).SingleOrDefault();
 
+            //If there is no team in the list, we will get : http 404 Not Found Error
             if (team is null)
                 return NotFound($"There is no team in the list with id = {id}!");
 
-            return Ok(team);
+            return Ok(team); //http 200
         }
 
         //Getting just one team by id from directly url
@@ -46,13 +46,13 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet("idFromQuery")]
         public IActionResult GetTeamByIdFromQuery([FromQuery] int id)
         {
-            //If there is NOT a team in the list, we will get : #404 Not Found Error
             var team = Teams.Where(d => d.Id == id).SingleOrDefault();
 
+            //If there is NOT a team in the list, we will get : http 404 Not Found Error
             if (team is null)
                 return NotFound($"There is no team in the list with id = {id}!");
 
-            return Ok(team);
+            return Ok(team); //http 200
         }
 
         //Getting teams according to a spesific property filter defined below
@@ -67,11 +67,11 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             if (powerUnit is null)
                 return NotFound("You didnt enter any input into the form!");
 
-            //If there is NOT a team in the list, we will get : #404 Not Found Error
+            //If there is NOT a team in the list, we will get : http 404 Not Found Error
             if (teams.Count == 0 )
                 return NotFound($"There is no team in the list with input = {powerUnit}!");
 
-            return Ok(teams); //Http 200
+            return Ok(teams); //http 200
         }
 
 
@@ -82,8 +82,10 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpPost]
         public IActionResult CreateTeam([FromBody] Team team)
         {
+            var teamToCheck = Teams.Where(d => d.Id == team.Id).SingleOrDefault();
+
             //If there is a team in the list with same id, we will get bad request.
-            if (Teams.Where(d => d.Id == team.Id).SingleOrDefault() is not null)
+            if (teamToCheck is not null)
                 return BadRequest( $"This team with id = {team.Id} is already exist in the list!");
 
             Teams.Add(team);
@@ -115,7 +117,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             //teamToUpdate.Drivers = teamToUpdate.Drivers != default ? team.Drivers : teamToUpdate.Drivers;
             teamToUpdate.Championship = teamToUpdate.Championship != default ? team.Championship : teamToUpdate.Championship;
 
-            return Ok(teamToUpdate);
+            return Ok(teamToUpdate); //http 200
         }
 
 
@@ -135,7 +137,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
                 return BadRequest("You didnt enter any Team value in the form!");
 
             teamToPatch.TeamChief = TeamChief;
-            return Ok(teamToPatch);
+            return Ok(teamToPatch); //http 200
         }
 
 
@@ -152,7 +154,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
                 return BadRequest($"The team you provided with id = {id} is not exist in the list!");
 
             Teams.Remove(teamToDelete);
-            return Ok($"The team with id = {id} has been deleted!");
+            return Ok($"The team with id = {id} has been deleted!"); //http 200
         }
 
 

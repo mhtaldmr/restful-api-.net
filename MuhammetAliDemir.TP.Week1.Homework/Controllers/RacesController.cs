@@ -20,11 +20,11 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet]
         public IActionResult GetRaces()
         {
-            //If there is no Races in the list, we will get : #404 Not Found Error
+            //If there is no Races in the list, we will get : http 404 Not Found Error
             if (Races.Count == 0)
                 return NotFound("There is no race in the list!");
 
-            return Ok(Races);
+            return Ok(Races); //Http 200
         }
 
         //Getting just one race by id
@@ -32,13 +32,13 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet("{id}")]
         public IActionResult GetRaceById(int id)
         {
-            //If there is no race in the list, we will get : #404 Not Found Error
+            //If there is no race in the list, we will get : http 404 Not Found Error
             var race = Races.Where(d => d.Id == id).SingleOrDefault();
 
             if (race is null)
                 return NotFound($"There is no race in the list with id = {id}!");
 
-            return Ok(race);
+            return Ok(race); //Http 200
         }
 
         //Getting just one race by id from directly url
@@ -46,13 +46,13 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpGet("idFromQuery")]
         public IActionResult GetRaceByIdFromQuery([FromQuery] int id)
         {
-            //If there is NOT a race in the list, we will get : #404 Not Found Error
+            //If there is NOT a race in the list, we will get : http 404 Not Found Error
             var race = Races.Where(d => d.Id == id).SingleOrDefault();
 
             if (race is null)
                 return NotFound($"There is no race in the list with id = {id}!");
 
-            return Ok(race);
+            return Ok(race); //Http 200
         }
 
         //Getting races according to a spesific property filter defined below
@@ -67,7 +67,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             if (location is null)
                 return NotFound("You didnt enter any input into the form!");
 
-            //If there is NOT a race in the list, we will get : #404 Not Found Error
+            //If there is NOT a race in the list, we will get : http 404 Not Found Error
             if (races.Count == 0)
                 return NotFound($"There is no race in the list with input = {location}!");
 
@@ -82,8 +82,10 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpPost]
         public IActionResult CreateRace([FromBody] Race race)
         {
+            var raceToCheck = Races.Where(d => d.Id == race.Id).SingleOrDefault();
+
             //If there is a race in the list with same id, we will get bad request.
-            if (Races.Where(d => d.Id == race.Id).SingleOrDefault() is not null)
+            if (raceToCheck is not null)
                 return BadRequest($"This race with id = {race.Id} is already exist in the list!");
 
             Races.Add(race);
@@ -98,9 +100,9 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateRace(int id, Race race)
         {
-            //If there is NOT a race in the list with same id, we will get bad request.
             var raceToUpdate = Races.Where(d => d.Id == id).SingleOrDefault();
 
+            //If there is NOT a race in the list with this id, we will get bad request.
             if (raceToUpdate is null)
                 return BadRequest($"This race with id = {id} doesnt exist in the list!");
 
@@ -114,7 +116,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
             raceToUpdate.LapRecord = raceToUpdate.LapRecord != default ? race.LapRecord : raceToUpdate.LapRecord;
             raceToUpdate.FirstRace = raceToUpdate.FirstRace != default ? race.FirstRace : raceToUpdate.FirstRace;
 
-            return Ok(raceToUpdate);
+            return Ok(raceToUpdate); //Http 200
         }
 
 
@@ -134,7 +136,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
                 return BadRequest("You didnt enter any Name value in the form!");
 
             raceToPatch.Name = Name;
-            return Ok(raceToPatch);
+            return Ok(raceToPatch); //Http 200
         }
 
 
@@ -151,7 +153,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
                 return BadRequest($"The race you provided with id = {id} is not exist in the list!");
 
             Races.Remove(raceToDelete);
-            return Ok($"The race with id = {id} has been deleted!");
+            return Ok($"The race with id = {id} has been deleted!"); //Http 200
         }
 
 
