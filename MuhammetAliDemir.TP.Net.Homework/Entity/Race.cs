@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace MuhammetAliDemir.TP.Week1.Homework.Entity
+namespace MuhammetAliDemir.TP.Net.Homework.Entity
 {
     public class Race
     {

@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MuhammetAliDemir.TP.Week1.Homework
+namespace MuhammetAliDemir.TP.Net.Homework
 {
     public class Startup
     {
@@ -32,7 +32,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MuhammetAliDemir.TP.Week1.Homework", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "MuhammetAliDemir.TP.Net.Homework", Version = "v1" });
             });
         }
 
@@ -43,7 +43,7 @@ namespace MuhammetAliDemir.TP.Week1.Homework
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MuhammetAliDemir.TP.Week1.Homework v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MuhammetAliDemir.TP.Net.Homework v1"));
             }
 
             app.UseHttpsRedirection();

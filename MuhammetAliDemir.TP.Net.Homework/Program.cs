@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MuhammetAliDemir.TP.Week1.Homework
+namespace MuhammetAliDemir.TP.Net.Homework
 {
     public class Program
     {

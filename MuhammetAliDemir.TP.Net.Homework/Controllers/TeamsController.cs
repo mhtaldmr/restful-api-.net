@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using MuhammetAliDemir.TP.Week1.Homework.Data;
-using MuhammetAliDemir.TP.Week1.Homework.Entity;
+using MuhammetAliDemir.TP.Net.Homework.Data;
+using MuhammetAliDemir.TP.Net.Homework.Entity;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MuhammetAliDemir.TP.Week1.Homework.Controllers
+namespace MuhammetAliDemir.TP.Net.Homework.Controllers
 {
     [Route("[controller]")]
     [ApiController]

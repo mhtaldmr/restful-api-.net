@@ -1,9 +1,9 @@
-﻿using MuhammetAliDemir.TP.Week1.Homework.Entity;
+﻿using MuhammetAliDemir.TP.Net.Homework.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MuhammetAliDemir.TP.Week1.Homework.Data
+namespace MuhammetAliDemir.TP.Net.Homework.Data
 {
     public class DataGenerator
     {

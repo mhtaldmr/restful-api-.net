@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "MuhammetAliDemir.TP.Week1.Homework": {
+    "MuhammetAliDemir.TP.Net.Homework": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

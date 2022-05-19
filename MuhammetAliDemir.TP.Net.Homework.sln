@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MuhammetAliDemir.TP.Week1.Homework", "MuhammetAliDemir.TP.Week1.Homework\MuhammetAliDemir.TP.Week1.Homework.csproj", "{710E5257-56A5-4064-AD06-5A20D298224E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuhammetAliDemir.TP.Net.Homework", "MuhammetAliDemir.TP.Net.Homework\MuhammetAliDemir.TP.Net.Homework.csproj", "{710E5257-56A5-4064-AD06-5A20D298224E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,4 +23,3 @@ Global
 		SolutionGuid = {9CBA2F12-042E-4666-B8BE-672E4A21171E}
 	EndGlobalSection
 EndGlobal
-
