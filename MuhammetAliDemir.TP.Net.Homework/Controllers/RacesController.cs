@@ -43,7 +43,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting just one race by id from directly url
-        //.../Races/idFromQuery?id=
+        //.../Races/id-from-query?id=
         [HttpGet("id-from-query")]
         public IActionResult GetRaceByIdFromQuery([FromQuery] int id)
         {

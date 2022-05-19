@@ -43,7 +43,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting just one team by id from directly url
-        //.../Teams/idFromQuery?id=
+        //.../Teams/id-from-query?id=
         [HttpGet("id-from-query")]
         public IActionResult GetTeamByIdFromQuery([FromQuery] int id)
         {

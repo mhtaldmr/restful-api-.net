@@ -43,7 +43,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting just one driver by id from directly url
-        //.../Drivers/idFromQuery?id=
+        //.../Drivers/id-from-query?id=
         [HttpGet("id-from-query")]
         public IActionResult GetDriverByIdFromQuery([FromQuery] int id)
         {
@@ -57,7 +57,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting drivers according to a spesific property filter defined below
-        //.../Drivers/list?raceCount=
+        //.../Drivers/list?raceEntered=
         [HttpGet("list")]
         public IActionResult GetDriverByRaceEntered([FromQuery] int? raceEntered)
         {
@@ -76,7 +76,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Internal Service Code Example
-        //.../Drivers/InternalServiceErrorExample
+        //.../Drivers/internal-service-error
         [HttpGet("internal-service-error")]
         public IActionResult InternalServiceError()
         {

@@ -3,6 +3,7 @@
 # TP .Net Week1
 
 This project is an example of using  ***Restful API*** principles.
+
 In the project the main theme is Formula 1 (a.k.a F1 or Formula One) Motor Racing elements.
 
 ### What I have used so far:
@@ -10,7 +11,7 @@ In the project the main theme is Formula 1 (a.k.a F1 or Formula One) Motor Racin
 - No Database used in this project.
 - To be able to use Restful APIs, dummy datas generated in Data Folder.
 - To test the APIs, *Swagger* and *Postman* has been used.
-- To be able to use Patch method, *JsonPatch* and *NewtonsoftJson* packages has been used.
+- To be able to serialize objects, *JsonPatch* and *NewtonsoftJson* packages has been used.
 
 
 ## Requirements
@@ -27,11 +28,12 @@ In the project the main theme is Formula 1 (a.k.a F1 or Formula One) Motor Racin
 
 To get the project :
 ```
-    git clone https://github.com/mhtaldmr/mhtaldmr.git
+    git clone https://github.com/186-Teleperformans-Net-Bootcamp/hafta1-mhtaldmr.git
 ```
 To reach the project folder :
 ```
-    cd MuhammetAliDemir.TP.Week1.Homework
+    cd hafta1-mhtaldmr 
+    cd MuhammetAliDemir.TP.Net.Homework
 ```
 To run the project:
 - If you are using the Visual Studio, just press **F5** or press **Start Debugging**.
@@ -40,14 +42,14 @@ To run the project:
 ```
     dotnet run
 ```
-
+- The port will be listening on : https://localhost:5001
 
 ## API Endpoints
 
 * All the http mehtods and return types in requirements are represented in the project.
 <br>
 *  Examples of endpoints like:
-<img src="https://github.com/mhtaldmr/malleyoo/blob/master/endpoints.PNG" alt="endpoint" />
+<img src="https://github.com/186-Teleperformans-Net-Bootcamp/hafta1-mhtaldmr/blob/main/endpoints.PNG" alt="endpoint" />
 
 - To be able to use Patch methods, JsonPatch and NewtonsoftJson Packages installed.
 - Adding the service of this package to Startup.cs file:
