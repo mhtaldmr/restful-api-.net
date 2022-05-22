@@ -8,7 +8,8 @@ using System.Linq;
 
 namespace MuhammetAliDemir.TP.Net.Homework.Controllers
 {
-    [Route("[controller]")]
+    //[Route("[controller]")]
+    [Route("/drivers")]
     [ApiController]
     public class DriversController : ControllerBase
     {
