@@ -26,7 +26,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***GET Methods***
 
         //Getting All the drivers in the list
-        //.../Drivers
+        //.../drivers
         [HttpGet]
         public IActionResult GetDrivers()
         {

@@ -18,7 +18,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***GET Methods***
 
         //Getting All the Races in the list
-        //.../Races
+        //.../races
         [HttpGet]
         public IActionResult GetRaces()
         {
@@ -30,7 +30,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting just one race by id
-        //.../Races/id
+        //.../races/id
         [HttpGet("{id}")]
         public IActionResult GetRaceById( int id )
         {
@@ -44,7 +44,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting just one race by id from directly url
-        //.../Races/id-from-query?id=
+        //.../races/id-from-query?id=
         [HttpGet("id-from-query")]
         public IActionResult GetRaceByIdFromQuery([FromQuery] int id)
         {
@@ -58,7 +58,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting races according to a spesific property filter defined below
-        //.../Races/list?location=
+        //.../races/list?location=
         [HttpGet("list")]
         public IActionResult GetRaceByLocation([FromQuery] string location)
         {
@@ -80,7 +80,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***POST Methods***
 
         //Posting race to the list
-        //.../Races
+        //.../races
         [HttpPost]
         public IActionResult CreateRace([FromBody] Race race)
         {
@@ -98,7 +98,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***PUT Methods***
 
         //Updating the race which was selected by id
-        //.../Races/id
+        //.../races/id
         [HttpPut("{id}")]
         public IActionResult UpdateRace( int id, Race race)
         {
@@ -125,7 +125,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***PATCH Methods***
 
         //Updating the race which was selected by id, Entering the values in the body
-        //.../Races/id
+        //.../races/id
         [HttpPatch("{id}")]
         public IActionResult UpdateRaceWithJsonPatch( int id, [FromBody] JsonPatchDocument<Race> raceToPatch)
         {
@@ -143,7 +143,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***DELETE Methods***
 
         //Deleitng the race which was selected by id
-        //.../Races/id
+        //.../races/id
         [HttpDelete("{id}")]
         public IActionResult DeleteRace( int id )
         {

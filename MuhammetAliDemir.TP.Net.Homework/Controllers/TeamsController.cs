@@ -18,7 +18,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***GET Methods***
 
         //Getting All the Teams in the list
-        //.../Teams
+        //.../teams
         [HttpGet]
         public IActionResult GetTeams()
         {
@@ -30,7 +30,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting just one team by id
-        //.../Teams/id
+        //.../teams/id
         [HttpGet("{id}")]
         public IActionResult GetTeamById( int id )
         {
@@ -44,7 +44,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting just one team by id from directly url
-        //.../Teams/id-from-query?id=
+        //.../teams/id-from-query?id=
         [HttpGet("id-from-query")]
         public IActionResult GetTeamByIdFromQuery([FromQuery] int id)
         {
@@ -58,7 +58,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting teams according to a spesific property filter defined below
-        //.../Teams/list?powerunit=
+        //.../teams/list?powerunit=
         [HttpGet("list")]
         public IActionResult GetTeamByPowerUnit([FromQuery] string powerUnit)
         {
@@ -80,7 +80,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***POST Methods***
 
         //Posting Team to the list
-        //.../Teams
+        //.../teams
         [HttpPost]
         public IActionResult CreateTeam([FromBody] Team team)
         {
@@ -99,7 +99,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***PUT Methods***
 
         //Updating the team which was selected by id
-        //.../Teams/id
+        //.../teams/id
         [HttpPut("{id}")]
         public IActionResult UpdateTeam( int id, Team team)
         {
@@ -126,7 +126,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***PATCH Methods***
 
         //Updating the team which was selected by id, Entering the values in the body
-        //.../Teams/id
+        //.../teams/id
         [HttpPatch("{id}")]
         public IActionResult UpdateTeamWithJsonPatch( int id, [FromBody] JsonPatchDocument<Team> teamToPatch)
         {
