@@ -5,6 +5,7 @@ using MuhammetAliDemir.TP.Net.Homework.Data;
 using MuhammetAliDemir.TP.Net.Homework.Entity;
 using System.Collections.Generic;
 using System.Linq;
+using MuhammetAliDemir.TP.Net.Homework.Extensions;
 
 namespace MuhammetAliDemir.TP.Net.Homework.Controllers
 {
@@ -30,7 +31,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting just one driver by id
-        //.../Drivers/id
+        //.../drivers/id
         [HttpGet("{id}")]
         public IActionResult GetDriverById( int id )
         {
@@ -39,12 +40,12 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
             //If there is NOT a driver in the list, we will get : http 404 Not Found Error
             if (driver is null)
                 return NotFound( $"There is no drivers in the list with id = {id}!");
-
+            
             return Ok(driver); //Http 200
         }
 
         //Getting just one driver by id from directly url
-        //.../Drivers/id-from-query?id=
+        //.../drivers/id-from-query?id=
         [HttpGet("id-from-query")]
         public IActionResult GetDriverByIdFromQuery([FromQuery] int id)
         {
@@ -58,7 +59,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         }
 
         //Getting drivers according to a spesific property filter defined below
-        //.../Drivers/list?raceEntered=
+        //.../drivers/list?raceEntered=
         [HttpGet("list")]
         public IActionResult GetDriverByRaceEntered([FromQuery] int? raceEntered)
         {
@@ -76,8 +77,24 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
             return Ok(drivers); //Http 200
         }
 
+
+        //Getting just PremiumDrivers
+        //.../drivers/premium-drivers
+        [HttpGet("premium-drivers")]
+        public IActionResult GetPremiumDrivers()
+        {
+            var premiumDrivers = Drivers.Where(d => d.IsPremiumDriver());
+
+            //If there is NOT a driver in the list, we will get : http 404 Not Found Error
+            if (premiumDrivers is null)
+                return NotFound($"There is no driver in the list with id = !");
+
+            return Ok(premiumDrivers); //Http 200
+        }
+
+
         //Internal Service Code Example
-        //.../Drivers/internal-service-error
+        //.../drivers/internal-service-error
         [HttpGet("internal-service-error")]
         public IActionResult InternalServiceError()
         {
@@ -107,7 +124,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***PUT Methods***
 
         //Updating the driver which was selected by id
-        //.../Drivers/id
+        //.../drivers/id
         [HttpPut("{id}")]
         public IActionResult UpdateDriver( int id, Driver driver)
         {
@@ -134,7 +151,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         //***PATCH Methods***
 
         //Updating the driver which was selected by id, Entering the values in the body
-        //.../Drivers/id
+        //.../drivers/id
         [HttpPatch("{id}")] 
         public IActionResult UpdateDriverWithJsonPatch( int id,[FromBody] JsonPatchDocument<Driver> driverToPatch)
         {
