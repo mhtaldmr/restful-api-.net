@@ -6,6 +6,7 @@ using MuhammetAliDemir.TP.Net.Homework.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using MuhammetAliDemir.TP.Net.Homework.Extensions;
+using MuhammetAliDemir.TP.Net.Homework.Services;
 
 namespace MuhammetAliDemir.TP.Net.Homework.Controllers
 {
@@ -15,6 +16,12 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
     public class DriversController : ControllerBase
     {
         public readonly static List<Driver> Drivers = DataGenerator.Drivers;
+        private readonly IDriverManagerService _driverManagerService;
+
+        public DriversController(IDriverManagerService driverManagerService)
+        {
+            _driverManagerService = driverManagerService;
+        }
 
         //***GET Methods***
 
@@ -143,7 +150,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
             driverToUpdate.RaceEntered = driverToUpdate.RaceEntered != default ? driver.RaceEntered : driverToUpdate.RaceEntered;
             driverToUpdate.Podiums = driverToUpdate.Podiums != default ? driver.Podiums : driverToUpdate.Podiums;
             driverToUpdate.Championship = driverToUpdate.Championship != default ? driver.Championship : driverToUpdate.Championship;
-
+           
             return Ok(driverToUpdate); //Http 200
         }
 

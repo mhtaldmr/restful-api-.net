@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MuhammetAliDemir.TP.Net.Homework.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,8 @@ namespace MuhammetAliDemir.TP.Net.Homework
 
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson();
+
+            services.AddScoped<IDriverManagerService, DriverManagerService>();
 
             services.AddSwaggerGen(c =>
             {
