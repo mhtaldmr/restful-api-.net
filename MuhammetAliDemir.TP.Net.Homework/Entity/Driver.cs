@@ -2,12 +2,8 @@
 
 namespace MuhammetAliDemir.TP.Net.Homework.Entity
 {
-    public class Driver
+    public class Driver : BaseEntity
     {
-        [Required]
-        public int Id { get; set; }
-        [Required]
-        public string Name { get; set; }
         public string Team { get; set; }
         public string Nationality { get; set; }
         public int RaceEntered { get; set; }
