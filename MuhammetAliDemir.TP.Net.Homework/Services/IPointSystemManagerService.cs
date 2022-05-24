@@ -2,12 +2,11 @@
 
 namespace MuhammetAliDemir.TP.Net.Homework.Services
 {
-    public interface IDriverManagerService
+    public interface IPointSystemManagerService
     {
         void RaceEnteredUpdater(Driver driver);
         void PodiumNumberUpdater(Driver driver);
-        void MakeNewContract();
-        void CancelContract();
+        void PointCalculator(Driver driver, Race race);
 
     }
 }

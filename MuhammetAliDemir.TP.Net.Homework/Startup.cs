@@ -31,7 +31,8 @@ namespace MuhammetAliDemir.TP.Net.Homework
             services.AddControllers();
             services.AddControllers().AddNewtonsoftJson();
 
-            services.AddScoped<IDriverManagerService, DriverManagerService>();
+            //We could change the implementation of Point manager when we want easily.
+            services.AddScoped<IPointSystemManagerService, EuropeRacePointManager>();
 
             services.AddSwaggerGen(c =>
             {

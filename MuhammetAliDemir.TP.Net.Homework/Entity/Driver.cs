@@ -9,5 +9,6 @@ namespace MuhammetAliDemir.TP.Net.Homework.Entity
         public int RaceEntered { get; set; }
         public int Podiums { get; set; }
         public int Championship { get; set; }
+        public int PointsAtThisYear { get; set; }
     }
 }

@@ -16,9 +16,9 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
     public class DriversController : ControllerBase
     {
         public readonly static List<Driver> Drivers = DataGenerator.Drivers;
-        private readonly IDriverManagerService _driverManagerService;
+        private readonly IPointSystemManagerService _driverManagerService;
 
-        public DriversController(IDriverManagerService driverManagerService)
+        public DriversController(IPointSystemManagerService driverManagerService)
         {
             _driverManagerService = driverManagerService;
         }
@@ -150,6 +150,7 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
             driverToUpdate.RaceEntered = driverToUpdate.RaceEntered != default ? driver.RaceEntered : driverToUpdate.RaceEntered;
             driverToUpdate.Podiums = driverToUpdate.Podiums != default ? driver.Podiums : driverToUpdate.Podiums;
             driverToUpdate.Championship = driverToUpdate.Championship != default ? driver.Championship : driverToUpdate.Championship;
+            driverToUpdate.PointsAtThisYear = driverToUpdate.PointsAtThisYear != default ? driver.PointsAtThisYear : driverToUpdate.PointsAtThisYear;
            
             return Ok(driverToUpdate); //Http 200
         }
