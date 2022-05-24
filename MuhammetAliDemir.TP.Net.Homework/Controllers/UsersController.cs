@@ -21,12 +21,23 @@ namespace MuhammetAliDemir.TP.Net.Homework.Controllers
         [CustomUserCheck("admin","password")]
         public IActionResult UserCheck( [FromQuery]string userName,[FromQuery] string password)
         {
+            Type type = typeof(UsersController);
+
+            var attr = type.GetMethod("UserCheck");
+
+            var _userName = attr.GetCustomAttributes(typeof(CustomUserCheckAttribute), true)
+                .Cast<CustomUserCheckAttribute>()
+                .Select(u => u._userName).ToList();
+
+            var _password = attr.GetCustomAttributes(typeof(CustomUserCheckAttribute), true)
+                .Cast<CustomUserCheckAttribute>()
+                .Select(p => p._password).ToList();
 
 
 
-            return true/*userName == user.Username && password == user.Password*/
-                ? Ok("User is Valid and Exist!")
-                : BadRequest("User is NOT Valid and Exist!");
+            return _userName.Contains(userName) && _password.Contains(password)
+                ? Ok("Welcome!! User is Valid and Exist!")
+                : BadRequest("Attention!! User is NOT Valid and Exist!");
         }
     }
 }

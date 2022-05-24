@@ -1,6 +1,4 @@
-
-
-# TP .Net Week1
+# RestFul API Design
 
 This project is an example of using  ***Restful API*** principles.
 
