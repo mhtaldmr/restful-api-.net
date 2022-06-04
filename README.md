@@ -26,11 +26,11 @@ In the project the main theme is Formula 1 (a.k.a F1 or Formula One) Motor Racin
 
 To get the project :
 ```
-    git clone https://github.com/186-Teleperformans-Net-Bootcamp/hafta1-mhtaldmr.git
+    git clone https://github.com/mhtaldmr/restful-api-.net.git
 ```
 To reach the project folder :
 ```
-    cd hafta1-mhtaldmr 
+    cd restful-api-.net 
     cd MuhammetAliDemir.TP.Net.Homework
 ```
 To run the project:
